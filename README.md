@@ -53,3 +53,11 @@ $ brew install go@1.18
 - `go package io/fs is not in goroot` の対応
   - goのversion up
   - https://zenn.dev/m_525/scraps/989d0208a621f6
+
+## go path
+.zshrc
+
+```
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+```
