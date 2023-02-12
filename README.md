@@ -8,6 +8,23 @@ $ go run cmd/server/main.go
 $ go run cmd/client/main.go
 ```
 
+## protoコマンドでコード生成
+- apiディレクトリで実行する場合
+  - `paths=source_relative`は相対パスで指定していることを表す
+```
+$ cd api
+$ protoc --go_out=../pkg/grpc --go_opt=paths=source_relative \
+	     --go-grpc_out=../pkg/grpc --go-grpc_opt=paths=source_relative \
+	     hello.proto
+```
+
+- rootディレクトリで実行する場合
+
+```
+$ protoc --go_out=./ --go-grpc_out=./ api/hello.proto
+```
+
+
 ## grpcurl での確認
 - https://zenn.dev/necocat/articles/e0a65f2da065ec
 - grpc serverを起動中に下記コマンドを実行
