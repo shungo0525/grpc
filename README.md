@@ -3,6 +3,11 @@
 $ go run cmd/server/main.go
 ```
 
+## client server 起動
+```
+$ go run cmd/client/main.go
+```
+
 ## grpcurl での確認
 - https://zenn.dev/necocat/articles/e0a65f2da065ec
 - grpc serverを起動中に下記コマンドを実行
