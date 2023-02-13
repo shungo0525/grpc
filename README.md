@@ -90,3 +90,22 @@ $ brew install go@1.18
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 ```
+
+## MySQL
+
+```
+% docker-compose exec mysql bash 
+# mysql -u root -ppassword development
+```
+
+```
+create table user (
+  id int AUTO_INCREMENT,
+  name varchar(10),
+  PRIMARY KEY (id)
+);
+```
+
+```
+insert into user (name) values ('name1');
+```
