@@ -1,3 +1,10 @@
+## コンテナに入る
+- ローカルで実行する場合は、下記コマンドを実行しなくて良い
+
+```
+$ docker-compose exec grpc bash
+```
+
 ## grpc server 起動
 ```
 $ go run cmd/server/main.go
