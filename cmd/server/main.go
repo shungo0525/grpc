@@ -1,15 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
-  "net"
-  "log"
-  "os"
-  "context"
-  "os/signal"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"log"
 	hellopb "mygrpc/pkg/grpc"
+	"net"
+	"os"
+	"os/signal"
 )
 
 func NewMyServer() *myServer {
@@ -28,10 +28,10 @@ func main() {
 	s := grpc.NewServer()
 
 	// 3. gRPCサーバーにGreetingServiceを登録
-  hellopb.RegisterGreetingServiceServer(s, NewMyServer())
+	hellopb.RegisterGreetingServiceServer(s, NewMyServer())
 
-  // 4. サーバーリフレクションの設定
-  reflection.Register(s)
+	// 4. サーバーリフレクションの設定
+	reflection.Register(s)
 
 	// 5. 作成したgRPCサーバーを、8080番ポートで稼働させる
 	go func() {

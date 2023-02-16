@@ -1,14 +1,14 @@
 package main
 
 import (
-  "bufio"
-  "fmt"
-  "os"
-  "log"
-  "context"
+	"bufio"
+	"context"
+	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"log"
 	hellopb "mygrpc/pkg/grpc"
+	"os"
 )
 
 var (
