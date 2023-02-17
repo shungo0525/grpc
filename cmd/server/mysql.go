@@ -38,7 +38,7 @@ func main() {
 }
 
 func getRows(db *sql.DB) *sql.Rows {
-	rows, err := db.Query("SELECT * FROM user")
+	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
 		fmt.Println("Error")
 		panic(err.Error())
