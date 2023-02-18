@@ -10,6 +10,7 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"io"
 )
 
 func NewMyServer() *myServer {
@@ -23,6 +24,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+  // NOTE: ログファイル生成
+	loggingSettings("debug.log")
 
 	// 2. gRPCサーバーを作成
 	s := grpc.NewServer()
@@ -52,9 +55,19 @@ type myServer struct {
 }
 
 func (s *myServer) Hello(ctx context.Context, req *hellopb.HelloRequest) (*hellopb.HelloResponse, error) {
+  // NOTE: ログ
+	log.Printf(req.GetName())
+
 	// リクエストからnameフィールドを取り出して
 	// "Hello, [名前]!"というレスポンスを返す
 	return &hellopb.HelloResponse{
 		Message: fmt.Sprintf("Hello, %s!", req.GetName()),
 	}, nil
+}
+
+func loggingSettings(filename string) {
+	logfile, _ := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	multiLogFile := io.MultiWriter(os.Stdout, logfile)
+	log.SetFlags(log.Ldate | log.Ltime | log.Llongfile)
+	log.SetOutput(multiLogFile)
 }
